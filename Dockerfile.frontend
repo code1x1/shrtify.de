@@ -1,0 +1,21 @@
+FROM node:20 as builder
+
+RUN DEBIAN_FRONTEND=noninteractive apt update
+
+RUN DEBIAN_FRONTEND=noninteractive apt install curl bash
+
+RUN curl https://get.volta.sh | bash
+
+RUN curl -fsSL https://bun.sh/install | bash
+
+WORKDIR /usr/src/shrtify.de
+
+COPY frontend /usr/src/shrtify.de/frontend
+
+WORKDIR /usr/src/shrtify.de/frontend
+
+RUN . ~/.bashrc && bun install --silent && PUBLIC_API_BASE_URL=https://api.shrtify.de bun run build --silent
+
+FROM nginx
+
+COPY --from=builder /usr/src/shrtify.de/frontend/dist /usr/share/nginx/html
