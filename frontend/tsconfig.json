@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "rootDir": "..",
+    "strict": true,
+    "esModuleInterop": true,
+    "checkJs": true
+  },
+  "include": ["./src", "./@types"]
+}
