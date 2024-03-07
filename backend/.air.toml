@@ -1,0 +1,36 @@
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "dist"
+
+[build]
+  args_bin = []
+  bin = "./dist/server"
+  cmd = "make build"
+  delay = 100
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_file = []
+  exclude_regex = ["_test.go"]
+  exclude_unchanged = false
+  follow_symlink = false
+  full_bin = "dlv exec ./dist/server --listen=127.0.0.1:2345 --headless=true --api-version=2 --accept-multiclient --continue --log --"
+  include_dir = ["src"]
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  log = "build-errors.log"
+
+[color]
+  app = ""
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  main_only = false
+  time = false
+
+[misc]
+  clean_on_exit = true
+
+[screen]
+  clear_on_rebuild = true
+  keep_scroll = true
