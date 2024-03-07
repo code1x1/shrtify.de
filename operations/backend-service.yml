@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: shrtify-de-service-backend
+spec:
+  selector:
+    app: shrtify-de-backend
+  ports:
+    - port: 3000

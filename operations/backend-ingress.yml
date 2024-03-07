@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx-shrtify-de-backend
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: api.shrtify.de 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: shrtify-de-service-backend
+            port:
+              number: 3000
+  tls:
+    - hosts:
+        - api.shrtify.de
+      secretName: ingress-api-shrtify-de-tls

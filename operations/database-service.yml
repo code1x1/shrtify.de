@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shrtify-de-service-postgres
+  labels:
+    app: shrtify-de-service-postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: shrtify-de-deployment-postgres

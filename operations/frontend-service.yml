@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: shrtify-de-service-frontend
+spec:
+  selector:
+    app: shrtify-de-frontend
+  ports:
+    - port: 80

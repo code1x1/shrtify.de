@@ -1,0 +1,11 @@
+  resources:
+    - database-service.yml
+    - database-deployment.yml
+    - persistent-volume.yml
+    - persistent-volume-claim.yml
+    - backend-pod.yml
+    - backend-service.yml
+    - backend-ingress.yml
+    - frontend-pod.yml
+    - frontend-service.yml
+    - frontend-ingress.yml

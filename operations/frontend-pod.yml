@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-shrtify-de-frontend
+  labels:
+    app: shrtify-de-frontend
+spec:
+  containers:
+    - name: shrtify-de-frontend
+      image: localhost:5000/frontend-shrtify-de:latest
+      imagePullPolicy: Always
+      resources:
+        requests:
+          memory: "50Mi"
+          cpu: "150m"
+        limits:
+          memory: "65Mi"
+          cpu: "180m"
