@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "air",
+            "type": "shell",
+            "command": ". ~/.profile && cd $(pwd)/backend && $HOME/go/bin/air",
+            "isBackground": true,
+            "hide": true,
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "problemMatcher":{
+                "base": "$go",
+                "applyTo": "allDocuments",
+                "owner": "go",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^.*Server started.*",
+                    "endsPattern": "^.*Fiber\\sv"
+                } 
+            }
+        },
+        {
+            "label": "killair",
+            "type": "shell",
+            "command": "killall air",
+            "problemMatcher": [],
+            "isBackground": true,
+            "hide": true,
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        }
+    ]
+}

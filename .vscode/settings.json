@@ -1,0 +1,21 @@
+{
+    "eslint.format.enable": true,
+    "eslint.workingDirectories": [
+        {
+          "mode": "auto" // Working directory based on the location of package.json, .eslintignore and .eslintrc* files
+        }
+    ],
+    "eslint.probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue",
+        "markdown",
+        "astro"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always"
+    },
+}
