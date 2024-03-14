@@ -8,4 +8,5 @@ type ShortUrl struct {
 	gorm.Model
 	Url  string
 	Code string `gorm:"unique"`
+	Host string
 }

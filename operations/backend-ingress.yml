@@ -18,7 +18,18 @@ spec:
             name: shrtify-de-service-backend
             port:
               number: 3000
+  - host: lllii.de 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: shrtify-de-service-backend
+            port:
+              number: 3000
   tls:
     - hosts:
         - api.shrtify.de
+        - lllii.de
       secretName: ingress-api-shrtify-de-tls

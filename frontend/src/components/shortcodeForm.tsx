@@ -5,7 +5,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { ErrorComponent } from "./subtopics";
 import { useAdmin } from "../hooks/admin/admin";
 import * as types from "../../@types";
-import ShortcodeList from "./shortcodeList";
+import { Select } from "react-daisyui"
 
 export default function App() {
     const {
@@ -18,6 +18,7 @@ export default function App() {
         defaultValues: {
             url: "",
             code: "",
+            host: "",
         },
     });
     const {createShortcode} = useAdmin();
@@ -73,6 +74,20 @@ export default function App() {
         return result;
     }, [errors.code, register]);
 
+
+    const host = useMemo(() => {
+        const result = ({
+            ...register("host"),
+            type: "select",
+            placeholder: "Please enter link code. (Optional)",
+            className: "",
+        });
+        if (errors.host) {
+            result.className += "border-error border-b-2";
+        }
+        return result;
+    }, [errors.host, register]);
+
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-3">
@@ -86,11 +101,20 @@ export default function App() {
                     name="code"
                     errors={errors}
                     render={ErrorComponent} />
-
+                <Select {...host}>
+                    <Select.Option value={"default"} disabled>
+                        Pick your favorite Domain
+                    </Select.Option>
+                    <Select.Option value={"api.shrtify.de"}>api.shrtify.de</Select.Option>
+                    <Select.Option value={"lllii.de"}>lllii.de</Select.Option>
+                </Select>
+                <ErrorMessage
+                    name="host"
+                    errors={errors}
+                    render={ErrorComponent} />
                 <input type="submit" value="Senden" className="btn" />
                 {shortUrl ? <a href={shortUrl}>{shortUrl}</a> : null}
             </form>
-            <ShortcodeList />
         </div>
     );
 }

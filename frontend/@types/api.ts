@@ -10,6 +10,7 @@ export type Meta = z.infer<typeof MetaSchema>
 export const CreateShortcodeRequestSchema = z.object({
   url: z.string(),
   code: z.string(),
+  host: z.string(),
 })
 export type CreateShortcodeRequest = z.infer<typeof CreateShortcodeRequestSchema>
 

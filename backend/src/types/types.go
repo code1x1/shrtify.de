@@ -22,6 +22,7 @@ type Api struct {
 func TypesInitialization() {
 	var withTypes bool
 	flag.BoolVar(&withTypes, "types", false, "generate types directory")
+	flag.Parse()
 	if !withTypes {
 		return
 	}

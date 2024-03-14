@@ -32,9 +32,16 @@ func GetMiddleware(db *gorm.DB) Middleware {
 			if count > 0 {
 				panic(shrtifyerror.ResponseShorturlCodeExists(code))
 			}
+			var host string
+			if request.Request.Host == "" {
+				host = ctx.Hostname()
+			} else {
+				host = request.Request.Host
+			}
 			result := db.Create(&types.ShortUrl{
 				Code: code,
 				Url:  request.Request.Url,
+				Host: host,
 			})
 
 			if result.Error != nil {
@@ -47,7 +54,7 @@ func GetMiddleware(db *gorm.DB) Middleware {
 					Error:  nil,
 				},
 				Response: types.CreateShortcodeResponse{
-					ShortUrl: ctx.Protocol() + "://" + ctx.Hostname() + "/p/" + code,
+					ShortUrl: ctx.Protocol() + "://" + host + "/p/" + code,
 				},
 			})
 		},

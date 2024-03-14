@@ -1,12 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ShortcodeForm from "../components/shortcodeForm";
+import ShortcodeList from "../components/shortcodeList";
 ---
 
 <Layout title="Shrtify">
 	<main>
-		<h1>Admin</h1>
+		<h1>Shrtify de</h1>
 		<ShortcodeForm client:only="react" />
+		<ShortcodeList client:only="react"/>
 	</main>
 </Layout>
 

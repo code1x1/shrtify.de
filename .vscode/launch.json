@@ -27,7 +27,8 @@
             "request": "launch",
             "mode": "auto",
             "envFile": "${workspaceFolder}/backend/.env",
-            "program": "${workspaceFolder}/backend/src"
+            "program": "${workspaceFolder}/backend/src",
+            "args": ["--types"]
         }
     ]
 }

@@ -12,7 +12,7 @@ export default function ShortcodeList() {
 
     useEffect(() => {
         (async () => {
-            const response = await getShortcodes({ page: currentPage, items: 2})
+            const response = await getShortcodes({ page: currentPage, items: 20})
             if (Array.isArray(response.data.response)) {
                 setList(response.data.response)
                 setPages(response.data.meta.more.pages);
