@@ -63,6 +63,10 @@ func GetMiddleware(db *gorm.DB) Middleware {
 			page := ctx.QueryInt("page", 1)
 			items := ctx.QueryInt("items", 25)
 
+			if items > 100 {
+				items = 100
+			}
+
 			models := &[]types.ShortUrl{}
 			result := db.Model(types.ShortUrl{}).Limit(items).Offset((page - 1) * items).Find(models)
 
@@ -83,8 +87,12 @@ func GetMiddleware(db *gorm.DB) Middleware {
 			}
 
 			for _, model := range *models {
+				var host string = ctx.Hostname()
+				if model.Host != "" {
+					host = model.Host
+				}
 				payload.Response = append(payload.Response, types.GetShortcodesResponse{
-					ShortUrl:    ctx.Protocol() + "://" + ctx.Hostname() + "/p/" + model.Code,
+					ShortUrl:    ctx.Protocol() + "://" + host + "/p/" + model.Code,
 					OriginalUrl: model.Url,
 				})
 			}

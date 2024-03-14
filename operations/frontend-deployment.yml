@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shrtify-de-frontend-deployment
+  labels:
+    app: shrtify-de-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shrtify-de-frontend
+  template:
+    metadata:
+      labels:
+        app: shrtify-de-frontend
+    spec:
+      containers:
+        - name: shrtify-de-frontend
+          image: localhost:5000/frontend-shrtify-de:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "150m"
+            limits:
+              memory: "65Mi"
+              cpu: "180m"

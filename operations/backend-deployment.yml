@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shrtify-de-backend-deployment
+  labels:
+    app: shrtify-de-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shrtify-de-backend
+  template:
+    metadata:
+      labels:
+        app: shrtify-de-backend
+    spec:
+      containers:
+        - name: shrtify-de-backend
+          image: localhost:5000/backend-shrtify-de:latest
+          imagePullPolicy: Always
+          envFrom:
+          - secretRef:
+              name: secret-shrtify-de-backend
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "150m"
+            limits:
+              memory: "65Mi"
+              cpu: "180m"

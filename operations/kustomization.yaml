@@ -3,9 +3,9 @@
     - database-deployment.yml
     - persistent-volume.yml
     - persistent-volume-claim.yml
-    - backend-pod.yml
+    - backend-deployment.yml
     - backend-service.yml
     - backend-ingress.yml
-    - frontend-pod.yml
+    - frontend-deployment.yml
     - frontend-service.yml
     - frontend-ingress.yml
